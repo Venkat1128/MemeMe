@@ -37,15 +37,32 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nJN-Q7-e97"/>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Top" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ozM-tt-z6P">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bottom" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xeH-0w-gfY">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="viT-Ml-zrz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" priority="750" constant="203" id="2vh-OQ-nZW"/>
                             <constraint firstItem="viT-Ml-zrz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5qI-LS-b0o"/>
+                            <constraint firstItem="xeH-0w-gfY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="123" id="Cbr-ct-eBB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ozM-tt-z6P" secondAttribute="trailing" constant="123" id="Hay-QK-NCJ"/>
                             <constraint firstItem="viT-Ml-zrz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IOC-4j-uRy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5Mc-dc-yzr" secondAttribute="trailing" constant="-16" id="IYe-mc-mCt"/>
+                            <constraint firstItem="5Mc-dc-yzr" firstAttribute="top" secondItem="viT-Ml-zrz" secondAttribute="bottom" priority="250" constant="179" id="LVj-1T-yu6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="viT-Ml-zrz" secondAttribute="trailing" constant="61" id="O4j-Gs-OMk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xeH-0w-gfY" secondAttribute="trailing" constant="123" id="PZE-Nh-bRi"/>
+                            <constraint firstItem="ozM-tt-z6P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="123" id="XIL-pA-HaU"/>
                             <constraint firstItem="viT-Ml-zrz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="61" id="aPr-Am-dSw"/>
+                            <constraint firstItem="ozM-tt-z6P" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" priority="750" constant="65" id="dn0-Hn-AaD"/>
+                            <constraint firstItem="5Mc-dc-yzr" firstAttribute="top" secondItem="xeH-0w-gfY" secondAttribute="bottom" constant="55" id="hCQ-P6-lwX"/>
                             <constraint firstItem="5Mc-dc-yzr" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="j5s-Zf-aos"/>
                             <constraint firstItem="5Mc-dc-yzr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="j5u-F2-SvM"/>
                         </constraints>
