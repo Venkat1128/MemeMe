@@ -10,18 +10,18 @@ import UIKit
 
 class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
 
+    //MARK:- Outlets
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    
+    //MARK:- View Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        topTextField.delegate = self
+        bottomTextField.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,6 +42,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         cameraPicker.sourceType = .camera
         present(cameraPicker, animated: true, completion: nil)
     }
+    //MARK:- Image Picker Deleage Mathods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
@@ -49,11 +50,15 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             dismiss(animated: true, completion: nil)
         }
     }
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    //MARK:- Textfield delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return bottomTextField.resignFirstResponder()
+        topTextField.resignFirstResponder()
+        bottomTextField.resignFirstResponder()
+        return true
     }
 }
 
