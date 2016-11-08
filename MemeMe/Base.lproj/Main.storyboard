@@ -68,8 +68,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomTextField" destination="xeH-0w-gfY" id="4JA-gh-Ndl"/>
                         <outlet property="cameraButton" destination="CZe-m0-LZP" id="RvM-YK-vZQ"/>
                         <outlet property="imagePickerView" destination="viT-Ml-zrz" id="yYZ-ub-AuT"/>
+                        <outlet property="topTextField" destination="ozM-tt-z6P" id="See-71-hvD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
