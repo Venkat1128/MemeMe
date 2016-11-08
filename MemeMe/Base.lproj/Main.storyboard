@@ -20,28 +20,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="viT-Ml-zrz"/>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Mc-dc-yzr">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="5Mc-dc-yzr">
                                 <items>
-                                    <barButtonItem title="Pick" id="4oe-tC-KF0">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="MrW-Zh-Wfm"/>
+                                    <barButtonItem systemItem="camera" id="CZe-m0-LZP">
                                         <connections>
-                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="Zt3-ex-LQv"/>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="IwU-Hr-UoT"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="5dI-sF-uCW"/>
+                                    <barButtonItem title="Album" width="100" id="4oe-tC-KF0">
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="m6g-uI-tnv"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="nJN-Q7-e97"/>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="5Mc-dc-yzr" firstAttribute="top" secondItem="viT-Ml-zrz" secondAttribute="bottom" constant="180" id="Bf8-Dy-bJN"/>
-                            <constraint firstItem="5Mc-dc-yzr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Ey4-Gb-OAY"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Mc-dc-yzr" secondAttribute="bottom" id="Icv-ya-Jhu"/>
-                            <constraint firstItem="viT-Ml-zrz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vmo-gH-TOI"/>
-                            <constraint firstItem="viT-Ml-zrz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="203" id="ZGA-zP-cUr"/>
-                            <constraint firstItem="viT-Ml-zrz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="61" id="d6L-AU-jOu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5Mc-dc-yzr" secondAttribute="trailing" constant="-16" id="v4z-d6-ClO"/>
+                            <constraint firstItem="viT-Ml-zrz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="203" id="2vh-OQ-nZW"/>
+                            <constraint firstItem="viT-Ml-zrz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5qI-LS-b0o"/>
+                            <constraint firstItem="viT-Ml-zrz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IOC-4j-uRy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5Mc-dc-yzr" secondAttribute="trailing" constant="-16" id="IYe-mc-mCt"/>
+                            <constraint firstItem="viT-Ml-zrz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="61" id="aPr-Am-dSw"/>
+                            <constraint firstItem="5Mc-dc-yzr" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="j5s-Zf-aos"/>
+                            <constraint firstItem="5Mc-dc-yzr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="j5u-F2-SvM"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="CZe-m0-LZP" id="RvM-YK-vZQ"/>
                         <outlet property="imagePickerView" destination="viT-Ml-zrz" id="yYZ-ub-AuT"/>
                     </connections>
                 </viewController>
