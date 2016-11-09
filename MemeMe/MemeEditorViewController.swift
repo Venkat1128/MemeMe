@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
+class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
     
     //MARK:- Outlets
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -23,7 +23,6 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         topTextField.textAlignment = .center
         bottomTextField.textAlignment = .center
-        
         let memeTextAttributes:[String:Any] = [
             NSStrokeColorAttributeName: UIColor.black,
             NSForegroundColorAttributeName: UIColor.white,
