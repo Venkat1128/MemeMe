@@ -7,19 +7,7 @@
 //
 
 import UIKit
-struct Memo {
-    let topText : String
-    let bottomText : String
-    let orignalImage : UIImage!
-    let memedImage : UIImage!
-    
-    init(topText: String, bottomText: String, orignalImage: UIImage!, memedImage: UIImage!) {
-        self.topText = topText
-        self.bottomText = bottomText
-        self.orignalImage = orignalImage
-        self.memedImage = memedImage;
-    }
-}
+
 class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
     
     //MARK:- Outlets
@@ -129,11 +117,8 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     
     //MARK:- save MemeMe 
     func saveMemeMe() {
-        let meme = Memo(topText: topTextField.text!, bottomText: bottomTextField.text!, orignalImage: imagePickerView.image, memedImage: generateMemedImage())
-        //let memeData : Data = NSKeyedArchiver.archivedData(withRootObject: meme)
-       // UserDefaults.standard.set(memeData, forKey: "MemeMe")
-       // let result : Memo = UserDefaults.standard.value(forKey: "MemeMe") as! Memo
-       // print(result.topText)
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, orignalImage: imagePickerView.image, memedImage: generateMemedImage())
+        Meme.saveMeme(meme: meme)
     }
     // Memed image
     func generateMemedImage() -> UIImage {

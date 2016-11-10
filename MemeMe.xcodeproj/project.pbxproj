@@ -14,6 +14,7 @@
 		8239394D1DD0EF0100F29879 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8239394B1DD0EF0100F29879 /* LaunchScreen.storyboard */; };
 		823939581DD0EF0100F29879 /* MemeMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823939571DD0EF0100F29879 /* MemeMeTests.swift */; };
 		823939631DD0EF0100F29879 /* MemeMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823939621DD0EF0100F29879 /* MemeMeUITests.swift */; };
+		825EA6A21DD51CD400D04951 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EA6A11DD51CD400D04951 /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		8239395E1DD0EF0100F29879 /* MemeMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemeMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		823939621DD0EF0100F29879 /* MemeMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeMeUITests.swift; sourceTree = "<group>"; };
 		823939641DD0EF0100F29879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		825EA6A11DD51CD400D04951 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				823939421DD0EF0100F29879 /* AppDelegate.swift */,
 				823939441DD0EF0100F29879 /* MemeEditorViewController.swift */,
+				825EA6A11DD51CD400D04951 /* Meme.swift */,
 				823939461DD0EF0100F29879 /* Main.storyboard */,
 				823939491DD0EF0100F29879 /* Assets.xcassets */,
 				8239394B1DD0EF0100F29879 /* LaunchScreen.storyboard */,
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				825EA6A21DD51CD400D04951 /* Meme.swift in Sources */,
 				823939451DD0EF0100F29879 /* MemeEditorViewController.swift in Sources */,
 				823939431DD0EF0100F29879 /* AppDelegate.swift in Sources */,
 			);
