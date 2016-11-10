@@ -7,7 +7,19 @@
 //
 
 import UIKit
-
+struct Memo {
+    let topText : String
+    let bottomText : String
+    let orignalImage : UIImage!
+    let memedImage : UIImage!
+    
+    init(topText: String, bottomText: String, orignalImage: UIImage!, memedImage: UIImage!) {
+        self.topText = topText
+        self.bottomText = bottomText
+        self.orignalImage = orignalImage
+        self.memedImage = memedImage;
+    }
+}
 class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
     
     //MARK:- Outlets
@@ -15,14 +27,14 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     //MARK:- View Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        topTextField.textAlignment = .center
-        bottomTextField.textAlignment = .center
+
         let memeTextAttributes:[String:Any] = [
             NSStrokeColorAttributeName: UIColor.black,
             NSForegroundColorAttributeName: UIColor.white,
@@ -32,8 +44,13 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
         
+        topTextField.textAlignment = .center
+        bottomTextField.textAlignment = .center
+        
         topTextField.delegate = self
         bottomTextField.delegate = self
+        
+        self.shareButton.isEnabled = false
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -58,6 +75,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         //
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             imagePickerView.image = image
+            self.shareButton.isEnabled = true
             dismiss(animated: true, completion: nil)
         }
     }
@@ -107,6 +125,40 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         let userInof = _notificaion.userInfo
         let keyBoardSize = userInof![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyBoardSize.cgRectValue.height
+    }
+    
+    //MARK:- save MemeMe 
+    func saveMemeMe() {
+        let meme = Memo(topText: topTextField.text!, bottomText: bottomTextField.text!, orignalImage: imagePickerView.image, memedImage: generateMemedImage())
+        //let memeData : Data = NSKeyedArchiver.archivedData(withRootObject: meme)
+       // UserDefaults.standard.set(memeData, forKey: "MemeMe")
+       // let result : Memo = UserDefaults.standard.value(forKey: "MemeMe") as! Memo
+       // print(result.topText)
+    }
+    // Memed image
+    func generateMemedImage() -> UIImage {
+        self.navigationController?.navigationBar.isHidden = true
+        self.toolBar.isHidden = true
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        self.navigationController?.navigationBar.isHidden = false
+        self.toolBar.isHidden = false
+        return memedImage
+    }
+    @IBAction func shareMemeMe(_ sender: Any) {
+        let memedImage = generateMemedImage()
+        let vc = UIActivityViewController(activityItems: [memedImage], applicationActivities: [])
+        vc.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) -> Void in
+            if completed == true {
+                self.saveMemeMe()
+            }
+        }
+        present(vc, animated: true)
+        
     }
 }
 

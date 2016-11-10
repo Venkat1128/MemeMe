@@ -78,11 +78,19 @@
                             <constraint firstItem="5Mc-dc-yzr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="j5u-F2-SvM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="MemeMe Editor" id="dut-nR-adN"/>
+                    <navigationItem key="navigationItem" title="MemeMe Editor" id="dut-nR-adN">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="lvp-xZ-LZ4">
+                            <connections>
+                                <action selector="shareMemeMe:" destination="BYZ-38-t0r" id="Vo2-Jg-wui"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="xeH-0w-gfY" id="kQM-lJ-5sm"/>
                         <outlet property="cameraButton" destination="CZe-m0-LZP" id="RvM-YK-vZQ"/>
                         <outlet property="imagePickerView" destination="viT-Ml-zrz" id="yYZ-ub-AuT"/>
+                        <outlet property="shareButton" destination="lvp-xZ-LZ4" id="OE5-Zn-XVg"/>
+                        <outlet property="toolBar" destination="5Mc-dc-yzr" id="R7a-9v-Azs"/>
                         <outlet property="topTextField" destination="ozM-tt-z6P" id="XVl-bn-Coc"/>
                     </connections>
                 </viewController>
