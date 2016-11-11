@@ -28,7 +28,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         topTextField.delegate = self
         bottomTextField.delegate = self
         
-        self.shareButton.isEnabled = false
+        shareButton.isEnabled = false
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,7 +39,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         let memeTextAttributes:[String:Any] = [
             NSStrokeColorAttributeName: UIColor.black,
             NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSStrokeWidthAttributeName: -2]
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
@@ -47,22 +47,19 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         bottomTextField.textAlignment = .center
 
     }
-    //MARK:- Pick an Image from Album
-    @IBAction func pickAnImageFromAlbum(_ sender: AnyObject) {
-       pickAnImageFromSource(sourceType: "album")
-    }
-    //MARK:- Pick an image from Camera
-    @IBAction func pickAnImageFromCamera(_ sender: AnyObject) {
-       pickAnImageFromSource(sourceType: "camera")
-    }
-    //MARK:- Pick an image source 
-    func pickAnImageFromSource(sourceType : String) {
-        let imagePicker = UIImagePickerController()
-        if sourceType == "camera"  {
-            imagePicker.sourceType = .camera
+    //MARK:- Pick an Image based on tag value
+    @IBAction func pickAnImageAction(_ sender: AnyObject) {
+        if sender.tag == 0 {
+            pickAnImageFromSource(sourceType: .camera) // Open Camers
         }else{
-            imagePicker.sourceType = .photoLibrary
+            pickAnImageFromSource(sourceType: .photoLibrary) // Open Photo Library
         }
+    }
+    
+    //MARK:- Pick an image source 
+    func pickAnImageFromSource(sourceType : UIImagePickerControllerSourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = sourceType
         imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
     }
@@ -111,14 +108,16 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     }
     //MARK: - Keyboard moves up on notification
     func keyboardWillShow(_ notification:Notification) {
-        view.frame.origin.y -= getKeyboardHeight(_notificaion: notification)
+        self.navigationController?.navigationBar.isHidden = true
+        view.frame.origin.y = getKeyboardHeight(notification) * -1
     }
     func keyboardWillHide(_ notification:Notification){
-        view.frame.origin.y += getKeyboardHeight(_notificaion: notification)
+        self.navigationController?.navigationBar.isHidden = false
+        view.frame.origin.y = 0
     }
     
-    func getKeyboardHeight(_notificaion :Notification) -> CGFloat{
-        let userInof = _notificaion.userInfo
+    func getKeyboardHeight(_ notificaion :Notification) -> CGFloat{
+        let userInof = notificaion.userInfo
         let keyBoardSize = userInof![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyBoardSize.cgRectValue.height
     }
