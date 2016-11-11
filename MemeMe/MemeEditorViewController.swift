@@ -23,18 +23,8 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        let memeTextAttributes:[String:Any] = [
-            NSStrokeColorAttributeName: UIColor.black,
-            NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
-            NSStrokeWidthAttributeName: 2]
-        
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        
-        topTextField.textAlignment = .center
-        bottomTextField.textAlignment = .center
-        
+        stylizeTextField(textField: topTextField)
+        stylizeTextField(textField: bottomTextField)
         topTextField.delegate = self
         bottomTextField.delegate = self
         
@@ -44,19 +34,37 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
+    //MARK:- Stylize textfield 
+    func stylizeTextField(textField: UITextField){
+        let memeTextAttributes:[String:Any] = [
+            NSStrokeColorAttributeName: UIColor.black,
+            NSForegroundColorAttributeName: UIColor.white,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
+            NSStrokeWidthAttributeName: -2]
+        topTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.textAlignment = .center
+        bottomTextField.textAlignment = .center
+
+    }
     //MARK:- Pick an Image from Album
     @IBAction func pickAnImageFromAlbum(_ sender: AnyObject) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+       pickAnImageFromSource(sourceType: "album")
     }
     //MARK:- Pick an image from Camera
     @IBAction func pickAnImageFromCamera(_ sender: AnyObject) {
-        let cameraPicker = UIImagePickerController()
-        cameraPicker.delegate = self
-        cameraPicker.sourceType = .camera
-        present(cameraPicker, animated: true, completion: nil)
+       pickAnImageFromSource(sourceType: "camera")
+    }
+    //MARK:- Pick an image source 
+    func pickAnImageFromSource(sourceType : String) {
+        let imagePicker = UIImagePickerController()
+        if sourceType == "camera"  {
+            imagePicker.sourceType = .camera
+        }else{
+            imagePicker.sourceType = .photoLibrary
+        }
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
     }
     //MARK:- Image Picker Deleage Mathods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

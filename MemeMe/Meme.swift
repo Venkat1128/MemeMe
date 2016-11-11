@@ -13,13 +13,6 @@ struct Meme {
     let bottomText : String
     let orignalImage : UIImage!
     let memedImage : UIImage!
-    
-    init(topText: String, bottomText: String, orignalImage: UIImage!, memedImage: UIImage!) {
-        self.topText = topText;
-        self.bottomText = bottomText
-        self.orignalImage = orignalImage
-        self.memedImage = memedImage
-    }
     // Save MemeMe
     static func saveMeme(meme : Meme){
         let memeClassObject = HelperClass.init(meMe: meme)
