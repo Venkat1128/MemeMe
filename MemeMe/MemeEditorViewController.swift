@@ -128,7 +128,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, orignalImage: imagePickerView.image, memedImage: generateMemedImage())
         Meme.saveMeme(meme: meme)
     }
-    // Memed image
+    //MARK:- Generate Memed image
     func generateMemedImage() -> UIImage {
         self.navigationController?.navigationBar.isHidden = true
         self.toolBar.isHidden = true
@@ -142,6 +142,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         self.toolBar.isHidden = false
         return memedImage
     }
+    //MARK:- Share my Meme
     @IBAction func shareMemeMe(_ sender: Any) {
         let memedImage = generateMemedImage()
         let vc = UIActivityViewController(activityItems: [memedImage], applicationActivities: [])
@@ -153,5 +154,12 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         present(vc, animated: true)
         
     }
+    // MARK:- unsubscibe for keyboard notification while change orienation 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        bottomTextField.resignFirstResponder()
+        unsubscribeFromKeyboardNotifications()
+    }
 }
+
+
 
