@@ -93,10 +93,16 @@
                                 <action selector="shareMemeMe:" destination="BYZ-38-t0r" id="Vo2-Jg-wui"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="30R-qD-r9M">
+                            <connections>
+                                <action selector="clearMemeImage:" destination="BYZ-38-t0r" id="0YJ-6E-31m"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="xeH-0w-gfY" id="kQM-lJ-5sm"/>
                         <outlet property="cameraButton" destination="CZe-m0-LZP" id="RvM-YK-vZQ"/>
+                        <outlet property="cancelButton" destination="30R-qD-r9M" id="BpX-4m-5q2"/>
                         <outlet property="imagePickerView" destination="viT-Ml-zrz" id="yYZ-ub-AuT"/>
                         <outlet property="shareButton" destination="lvp-xZ-LZ4" id="OE5-Zn-XVg"/>
                         <outlet property="toolBar" destination="5Mc-dc-yzr" id="R7a-9v-Azs"/>

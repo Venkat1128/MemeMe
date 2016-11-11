@@ -17,7 +17,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
-    
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     //MARK:- View Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,8 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         stylizeTextField(textField: bottomTextField)
         topTextField.delegate = self
         bottomTextField.delegate = self
-        
         shareButton.isEnabled = false
+        cancelButton.isEnabled = false
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -68,7 +68,8 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         //
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             imagePickerView.image = image
-            self.shareButton.isEnabled = true
+            shareButton.isEnabled = true
+            cancelButton.isEnabled = true
             dismiss(animated: true, completion: nil)
         }
     }
@@ -152,6 +153,11 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         }
         present(vc, animated: true)
         
+    }
+    @IBAction func clearMemeImage(_ sender: Any) {
+        imagePickerView.image = nil
+        shareButton.isEnabled = false
+        cancelButton.isEnabled = false
     }
     // MARK:- unsubscibe for keyboard notification while change orienation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
