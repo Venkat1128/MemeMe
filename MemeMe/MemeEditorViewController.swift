@@ -154,7 +154,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         present(vc, animated: true)
         
     }
-    // MARK:- unsubscibe for keyboard notification while change orienation 
+    // MARK:- unsubscibe for keyboard notification while change orienation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         bottomTextField.resignFirstResponder()
         unsubscribeFromKeyboardNotifications()
