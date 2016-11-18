@@ -29,6 +29,8 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         bottomTextField.delegate = self
         shareButton.isEnabled = false
         cancelButton.isEnabled = false
+        topTextField.text = "Top"
+        bottomTextField.text = "Bottom"
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -85,6 +87,8 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        topTextField.text = nil
+        bottomTextField.text = nil
         // Subscribe to keyboard notification for bottom text field
         if textField == bottomTextField {
             subscribeToKeyboardNotifications()
@@ -131,6 +135,12 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         let Object = UIApplication.shared.delegate
         let appDelegate = Object as! AppDelegate
         appDelegate.memes.append(meme)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "memetabbar") 
+        // Alternative way to present the new view controller
+        self.present(vc, animated: true, completion: nil)
+        //self.navigationController?.show(vc, sender: nil)
         //Meme.saveMeme(meme: meme)
     }
     //MARK:- Generate Memed image
