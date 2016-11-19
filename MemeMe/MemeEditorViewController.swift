@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// MARK:- MemeEditorViewController
 class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
     
     //MARK:- Outlets
