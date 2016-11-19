@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RHL-ll-sb5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6TT-bR-VkT">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--MemeMe Editor-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditor" id="BYZ-38-t0r" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -128,12 +128,12 @@
             </objects>
             <point key="canvasLocation" x="-3087" y="-164"/>
         </scene>
-        <!--TableView-->
+        <!--Navigation Controller-->
         <scene sceneID="SHF-yq-70c">
             <objects>
                 <navigationController id="gaY-PJ-zIe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="TableView" id="Y5p-zJ-9Vg"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lvr-8J-SJW">
+                    <tabBarItem key="tabBarItem" title="" image="table" id="Y5p-zJ-9Vg"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Lvr-8J-SJW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -161,10 +161,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6tO-TI-Mr5">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6tO-TI-Mr5">
                                             <rect key="frame" x="15" y="0.0" width="290" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -177,17 +177,24 @@
                             <outlet property="delegate" destination="ezc-K1-iqu" id="3sQ-NL-18k"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="laa-VQ-u5c"/>
+                    <navigationItem key="navigationItem" id="laa-VQ-u5c">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="b4F-Jh-xqd"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RuI-d5-UER">
+                            <connections>
+                                <action selector="AddNewMeme:" destination="ezc-K1-iqu" id="jAr-0m-rkP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3O-ay-jw1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1238" y="-540"/>
         </scene>
-        <!--CollectionView-->
+        <!--Navigation Controller-->
         <scene sceneID="L1V-gI-PQy">
             <objects>
                 <navigationController id="OQ0-Gh-bDI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="CollectionView" id="9NA-Y7-058"/>
+                    <tabBarItem key="tabBarItem" title="" image="collection" id="9NA-Y7-058"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DpJ-KB-dMZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -221,6 +228,12 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pKJ-pB-JAF">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
                             </collectionViewCell>
                         </cells>
@@ -229,7 +242,10 @@
                             <outlet property="delegate" destination="GdA-fR-uEO" id="Wwf-eD-gJ7"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="mBi-hs-MC7"/>
+                    <navigationItem key="navigationItem" id="mBi-hs-MC7">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Ir5-eS-1XZ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="coq-uc-H0p"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4jv-3d-Wk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -238,7 +254,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tJN-4H-Zd9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RHL-ll-sb5" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MemeEditorNav" automaticallyAdjustsScrollViewInsets="NO" id="RHL-ll-sb5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HDU-wf-EzN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -254,4 +270,8 @@
             <point key="canvasLocation" x="270" y="-21"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="collection" width="30" height="30"/>
+        <image name="table" width="30" height="30"/>
+    </resources>
 </document>

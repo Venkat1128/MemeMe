@@ -136,10 +136,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         let appDelegate = Object as! AppDelegate
         appDelegate.memes.append(meme)
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "memetabbar") 
-        // Alternative way to present the new view controller
-        self.present(vc, animated: true, completion: nil)
+       self.dismiss(animated: true, completion: nil)
         //self.navigationController?.show(vc, sender: nil)
         //Meme.saveMeme(meme: meme)
     }
