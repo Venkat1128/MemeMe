@@ -32,7 +32,7 @@ class MemeCollectionViewController: UICollectionViewController,MemeEditorViewCon
         flowLayout.itemSize = CGSize(width: dimensionWidth, height: dimensionHight)
         
         
-        self.title = "Sent Memes"
+        self.navigationItem.title = "Sent Memes"
         // Read memes count on view load and if count is zero show Meme editor on screen
         appdelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appdelegate.memes

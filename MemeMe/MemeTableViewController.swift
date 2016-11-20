@@ -18,8 +18,7 @@ class MemeTableViewController: UITableViewController,MemeEditorViewControllerDel
     //MARK:- View Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Sent Memes"
-        //self.tableView.isEditing = true
+        self.navigationItem.title = "Sent Memes"
         // Read memes count on view load and if count is zero show Meme editor on screen
         appdelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appdelegate.memes
@@ -83,4 +82,17 @@ class MemeTableViewController: UITableViewController,MemeEditorViewControllerDel
         self.tableView.reloadData()
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            self.tableView.beginUpdates()
+            memes.remove(at: indexPath.row)
+            appdelegate.memes = memes
+            self.tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.automatic)
+            self.tableView.endUpdates()
+            
+        }
+    }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 }

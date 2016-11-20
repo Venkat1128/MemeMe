@@ -108,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="504" y="-140"/>
+            <point key="canvasLocation" x="619" y="-489"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qqE-Y3-eTo">
@@ -290,7 +290,7 @@
                             <constraint firstItem="iX3-at-ykW" firstAttribute="centerX" secondItem="zTk-l1-wLJ" secondAttribute="centerX" id="zgQ-FA-YgZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Dqx-aY-plF"/>
+                    <navigationItem key="navigationItem" title="Meme Detail" id="Dqx-aY-plF"/>
                     <connections>
                         <outlet property="memeDeatilImageView" destination="iX3-at-ykW" id="u6h-Ms-JDW"/>
                     </connections>
@@ -315,7 +315,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdB-Mh-h89" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="641.25" y="-140.49295774647888"/>
+            <point key="canvasLocation" x="-120" y="-495"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="P5L-Gc-TBp">
