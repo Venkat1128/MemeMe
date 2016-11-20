@@ -57,6 +57,11 @@ class MemeTableViewController: UITableViewController,MemeEditorViewControllerDel
         cell.textLabel?.text = memeObject.topText + "......" + memeObject.bottomText
         return cell
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        detailController.meme = self.memes[(indexPath as NSIndexPath).row]
+        self.navigationController!.pushViewController(detailController, animated: true)
+    }
     //MARK:- add Action button
     @IBAction func AddNewMeme(_ sender: Any) {
         addNewMeme()

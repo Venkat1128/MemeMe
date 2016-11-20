@@ -173,9 +173,8 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         
     }
     @IBAction func clearMemeImage(_ sender: Any) {
-        imagePickerView.image = nil
         shareButton.isEnabled = false
-        cancelButton.isEnabled = false
+        dismiss(animated: true, completion: nil)
     }
     // MARK:- unsubscibe for keyboard notification while change orienation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

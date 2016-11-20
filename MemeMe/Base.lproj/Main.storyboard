@@ -108,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038.75" y="-21.12676056338028"/>
+            <point key="canvasLocation" x="504" y="-140"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qqE-Y3-eTo">
@@ -263,6 +263,40 @@
             </objects>
             <point key="canvasLocation" x="-1239.375" y="203.87323943661971"/>
         </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="9LV-vh-s28">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" id="D2p-Gc-b5m" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="va1-V9-fGa"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nbp-gp-m1d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zTk-l1-wLJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iX3-at-ykW">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Ntu-VS-X9M"/>
+                                    <constraint firstAttribute="height" constant="548" id="nLD-s0-2gz"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iX3-at-ykW" firstAttribute="centerY" secondItem="zTk-l1-wLJ" secondAttribute="centerY" constant="10" id="x7D-EF-AVY"/>
+                            <constraint firstItem="iX3-at-ykW" firstAttribute="centerX" secondItem="zTk-l1-wLJ" secondAttribute="centerX" id="zgQ-FA-YgZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="memeDeatilImageView" destination="iX3-at-ykW" id="u6h-Ms-JDW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tnu-lT-SPA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-427.5" y="512.32394366197184"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="tJN-4H-Zd9">
             <objects>
@@ -279,7 +313,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdB-Mh-h89" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270" y="-21"/>
+            <point key="canvasLocation" x="-356" y="-140"/>
         </scene>
     </scenes>
     <resources>
