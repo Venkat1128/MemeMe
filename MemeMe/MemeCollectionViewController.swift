@@ -13,7 +13,7 @@ private let reuseIdentifier = "memecollectionviewcell"
 class MemeCollectionViewController: UICollectionViewController,MemeEditorViewControllerDelegate {
     
     // MARK: Properties
-    
+    @IBOutlet weak var flowLayout:UICollectionViewFlowLayout!
     // Get ahold of some memes, for the table
     // This is an array of Meme instances.
     var memes = [Meme]()
@@ -21,6 +21,17 @@ class MemeCollectionViewController: UICollectionViewController,MemeEditorViewCon
     //MARK:- View Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let space:CGFloat = 3.0
+        let dimensionWidth = (self.view.frame.size.width - (2 * space)) / 3.0
+        let dimensionHight = (self.view.frame.size.height - (2 * space)) / 3.0
+        
+        
+        flowLayout.minimumLineSpacing = space
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.itemSize = CGSize(width: dimensionWidth, height: dimensionHight)
+        
+        
         self.title = "Sent Memes"
         // Read memes count on view load and if count is zero show Meme editor on screen
         appdelegate = UIApplication.shared.delegate as! AppDelegate
@@ -71,6 +82,7 @@ class MemeCollectionViewController: UICollectionViewController,MemeEditorViewCon
         let vc = storyboard.instantiateViewController(withIdentifier: "MemeEditorNav") as! UINavigationController
         let memeEditorView:MemeEditorViewController = vc.viewControllers[0] as! MemeEditorViewController
         memeEditorView.delegate = self
+        memeEditorView.cancelButton.isEnabled = true;
         // Alternative way to present the new view controller
         self.present(vc, animated: true, completion: nil)
     }

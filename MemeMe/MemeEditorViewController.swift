@@ -28,14 +28,19 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        topTextField.text = "Top"
+        bottomTextField.text = "Bottom"
         stylizeTextField(textField: topTextField)
         stylizeTextField(textField: bottomTextField)
         topTextField.delegate = self
         bottomTextField.delegate = self
         shareButton.isEnabled = false
-        cancelButton.isEnabled = false
-        topTextField.text = "Top"
-        bottomTextField.text = "Bottom"
+       
+        
+        let appdelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        if appdelegate.memes.count == 0 {
+            cancelButton.isEnabled = false;
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -76,7 +81,6 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             imagePickerView.image = image
             shareButton.isEnabled = true
-            cancelButton.isEnabled = true
             dismiss(animated: true, completion: nil)
         }
     }

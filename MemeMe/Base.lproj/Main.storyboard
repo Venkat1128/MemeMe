@@ -178,7 +178,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="laa-VQ-u5c">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="b4F-Jh-xqd"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RuI-d5-UER">
                             <connections>
                                 <action selector="AddNewMeme:" destination="ezc-K1-iqu" id="jAr-0m-rkP"/>
@@ -251,22 +250,24 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="mBi-hs-MC7">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Ir5-eS-1XZ"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="coq-uc-H0p">
                             <connections>
                                 <action selector="addNewMeme:" destination="GdA-fR-uEO" id="I1d-1i-Ug5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="flowLayout" destination="kZ6-gn-V2S" id="9sh-37-2Sc"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4jv-3d-Wk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1239.375" y="203.87323943661971"/>
         </scene>
-        <!--Meme Detail View Controller-->
+        <!--Meme Detail-->
         <scene sceneID="9LV-vh-s28">
             <objects>
-                <viewController storyboardIdentifier="MemeDetailViewController" id="D2p-Gc-b5m" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeDetailViewController" title="Meme Detail" id="D2p-Gc-b5m" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="va1-V9-fGa"/>
                         <viewControllerLayoutGuide type="bottom" id="Nbp-gp-m1d"/>
@@ -289,13 +290,14 @@
                             <constraint firstItem="iX3-at-ykW" firstAttribute="centerX" secondItem="zTk-l1-wLJ" secondAttribute="centerX" id="zgQ-FA-YgZ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Dqx-aY-plF"/>
                     <connections>
                         <outlet property="memeDeatilImageView" destination="iX3-at-ykW" id="u6h-Ms-JDW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tnu-lT-SPA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-427.5" y="512.32394366197184"/>
+            <point key="canvasLocation" x="570" y="512.32394366197184"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tJN-4H-Zd9">
@@ -313,7 +315,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdB-Mh-h89" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-356" y="-140"/>
+            <point key="canvasLocation" x="641.25" y="-140.49295774647888"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="P5L-Gc-TBp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jnT-16-ZGH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XhD-Xi-TFi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="D2p-Gc-b5m" kind="relationship" relationship="rootViewController" id="2Sk-GQ-5g4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="diK-fz-C9q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-427.5" y="512.32394366197184"/>
         </scene>
     </scenes>
     <resources>

@@ -19,14 +19,14 @@ class MemeTableViewController: UITableViewController,MemeEditorViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Sent Memes"
+        //self.tableView.isEditing = true
         // Read memes count on view load and if count is zero show Meme editor on screen
         appdelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appdelegate.memes
         if memes.count == 0 {
             addNewMeme()
         }
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -72,6 +72,7 @@ class MemeTableViewController: UITableViewController,MemeEditorViewControllerDel
         let vc = storyboard.instantiateViewController(withIdentifier: "MemeEditorNav") as! UINavigationController
         let memeEditorView:MemeEditorViewController = vc.viewControllers[0] as! MemeEditorViewController
         memeEditorView.delegate = self
+        memeEditorView.cancelButton.isEnabled = true;
         // Alternative way to present the new view controller
         self.present(vc, animated: true, completion: nil)
     }
@@ -81,4 +82,5 @@ class MemeTableViewController: UITableViewController,MemeEditorViewControllerDel
         memes = appdelegate.memes
         self.tableView.reloadData()
     }
+    
 }
