@@ -6,10 +6,15 @@
 //  Copyright © 2016 Kurapati. All rights reserved.
 //
 
+
 import UIKit
+protocol MemeEditorViewControllerDelegate: class {
+    func updateMemesList()
+}
 // MARK:- MemeEditorViewController
 class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
     
+    weak var delegate:MemeEditorViewControllerDelegate?
     //MARK:- Outlets
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -135,8 +140,9 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         let Object = UIApplication.shared.delegate
         let appDelegate = Object as! AppDelegate
         appDelegate.memes.append(meme)
+        delegate?.updateMemesList()
+        self.dismiss(animated: true, completion: nil)
         
-       self.dismiss(animated: true, completion: nil)
         //self.navigationController?.show(vc, sender: nil)
         //Meme.saveMeme(meme: meme)
     }

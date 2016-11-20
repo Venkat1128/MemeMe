@@ -8,18 +8,19 @@
 
 import UIKit
 //MARK:- MemeTableViewController: UITableViewController
-class MemeTableViewController: UITableViewController {
+class MemeTableViewController: UITableViewController,MemeEditorViewControllerDelegate {
     // MARK: Properties
     
     // Get ahold of some memes, for the table
     // This is an array of Meme instances.
     var memes = [Meme]()
-    
+    var appdelegate =  AppDelegate()
     //MARK:- View Life cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Sent Memes"
         // Read memes count on view load and if count is zero show Meme editor on screen
-        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        appdelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appdelegate.memes
         if memes.count == 0 {
             addNewMeme()
@@ -29,11 +30,11 @@ class MemeTableViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let appdelegate = UIApplication.shared.delegate as! AppDelegate
-        memes = appdelegate.memes
-        self.tableView.reloadData()
+        appdelegate = UIApplication.shared.delegate as! AppDelegate
+        if self.memes.count != appdelegate.memes.count  {
+            updateMemesList()
+        }
     }
-    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -56,16 +57,23 @@ class MemeTableViewController: UITableViewController {
         cell.textLabel?.text = memeObject.topText + "......" + memeObject.bottomText
         return cell
     }
-    
+    //MARK:- add Action button
     @IBAction func AddNewMeme(_ sender: Any) {
         addNewMeme()
     }
-    
+    //MARK:- Show Meme editor
     func addNewMeme(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MemeEditorNav")
+        let vc = storyboard.instantiateViewController(withIdentifier: "MemeEditorNav") as! UINavigationController
+        let memeEditorView:MemeEditorViewController = vc.viewControllers[0] as! MemeEditorViewController
+        memeEditorView.delegate = self
         // Alternative way to present the new view controller
         self.present(vc, animated: true, completion: nil)
     }
-    
+     //MARK:- Meme editor delegete method
+    func updateMemesList() {
+        appdelegate = UIApplication.shared.delegate as! AppDelegate
+        memes = appdelegate.memes
+        self.tableView.reloadData()
+    }
 }
