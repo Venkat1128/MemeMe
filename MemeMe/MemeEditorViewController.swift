@@ -100,11 +100,15 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        topTextField.text = nil
-        bottomTextField.text = nil
+       
         // Subscribe to keyboard notification for bottom text field
         if textField == bottomTextField {
+            bottomTextField.text = ""
+            bottomTextField.text = textField.text
             subscribeToKeyboardNotifications()
+        }else{
+            topTextField.text = ""
+            topTextField.text = textField.text
         }
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
