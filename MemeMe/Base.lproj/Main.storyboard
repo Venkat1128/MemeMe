@@ -290,7 +290,13 @@
                             <constraint firstItem="iX3-at-ykW" firstAttribute="centerX" secondItem="zTk-l1-wLJ" secondAttribute="centerX" id="zgQ-FA-YgZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Meme Detail" id="Dqx-aY-plF"/>
+                    <navigationItem key="navigationItem" title="Meme Detail" id="Dqx-aY-plF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Id2-tD-N8i">
+                            <connections>
+                                <action selector="editsavedMeme:" destination="D2p-Gc-b5m" id="7Qj-BW-7Ea"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="memeDeatilImageView" destination="iX3-at-ykW" id="u6h-Ms-JDW"/>
                     </connections>

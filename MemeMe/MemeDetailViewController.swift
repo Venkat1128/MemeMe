@@ -26,5 +26,13 @@ class MemeDetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
+    @IBAction func editsavedMeme(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MemeEditorNav") as! UINavigationController
+        let memeEditorView:MemeEditorViewController = vc.viewControllers[0] as! MemeEditorViewController
+        memeEditorView.cancelButton.isEnabled = true;
+        // Alternative way to present the new view controller
+        self.present(vc, animated: true, completion: nil)
+    }
 
 }
