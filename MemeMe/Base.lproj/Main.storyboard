@@ -230,15 +230,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pKJ-pB-JAF">
-                                            <rect key="frame" x="10" y="10" width="80" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="pKJ-pB-JAF" firstAttribute="centerY" secondItem="TSf-au-vpw" secondAttribute="centerY" id="AMN-G1-I7Y"/>
                                     <constraint firstItem="pKJ-pB-JAF" firstAttribute="centerX" secondItem="TSf-au-vpw" secondAttribute="centerX" id="FON-Ho-L4P"/>
-                                    <constraint firstItem="pKJ-pB-JAF" firstAttribute="top" secondItem="TSf-au-vpw" secondAttribute="top" constant="10" id="anH-yf-Jzc"/>
-                                    <constraint firstItem="pKJ-pB-JAF" firstAttribute="leading" secondItem="TSf-au-vpw" secondAttribute="leading" constant="10" id="xUU-OC-xy8"/>
+                                    <constraint firstItem="pKJ-pB-JAF" firstAttribute="top" secondItem="TSf-au-vpw" secondAttribute="top" id="anH-yf-Jzc"/>
+                                    <constraint firstItem="pKJ-pB-JAF" firstAttribute="leading" secondItem="TSf-au-vpw" secondAttribute="leading" id="xUU-OC-xy8"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="memeImageView" destination="pKJ-pB-JAF" id="IxN-eR-alS"/>
