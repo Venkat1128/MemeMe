@@ -15,6 +15,7 @@ protocol MemeEditorViewControllerDelegate: class {
 class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
     
     weak var delegate:MemeEditorViewControllerDelegate?
+    var imagetobeEdited:UIImage!
     //MARK:- Outlets
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -35,7 +36,10 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         topTextField.delegate = self
         bottomTextField.delegate = self
         shareButton.isEnabled = false
-       
+        if imagetobeEdited != nil {
+            self.imagePickerView.image = imagetobeEdited
+            shareButton.isEnabled = true
+        }
         
         let appdelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
         if appdelegate.memes.count == 0 {
@@ -75,7 +79,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
     }
-    //MARK:- Image Picker Deleage Mathods
+    //MARK:- Image Picker Deleage Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
@@ -145,10 +149,8 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         let appDelegate = Object as! AppDelegate
         appDelegate.memes.append(meme)
         delegate?.updateMemesList()
+        imagetobeEdited = nil;
         self.dismiss(animated: true, completion: nil)
-        
-        //self.navigationController?.show(vc, sender: nil)
-        //Meme.saveMeme(meme: meme)
     }
     //MARK:- Generate Memed image
     func generateMemedImage() -> UIImage {
@@ -178,6 +180,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     }
     @IBAction func clearMemeImage(_ sender: Any) {
         shareButton.isEnabled = false
+        imagetobeEdited = nil
         dismiss(animated: true, completion: nil)
     }
     // MARK:- unsubscibe for keyboard notification while change orienation

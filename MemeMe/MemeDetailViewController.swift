@@ -31,6 +31,7 @@ class MemeDetailViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "MemeEditorNav") as! UINavigationController
         let memeEditorView:MemeEditorViewController = vc.viewControllers[0] as! MemeEditorViewController
         memeEditorView.cancelButton.isEnabled = true;
+        memeEditorView.imagetobeEdited = meme.memedImage;
         // Alternative way to present the new view controller
         self.present(vc, animated: true, completion: nil)
     }
